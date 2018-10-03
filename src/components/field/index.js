@@ -366,9 +366,9 @@ export default class TextField extends PureComponent {
       defaultValue:
       text;
 
-    let active = !!(value || props.placeholder);
-    let count = value.length;
-    let restricted = limit < count;
+      let active = !!(value || props.placeholder);
+      let count = value.length;
+      let restricted = limit < count;
 
     let textAlign = I18nManager.isRTL?
       'right':
@@ -516,12 +516,10 @@ export default class TextField extends PureComponent {
           <View style={styles.row}>
             {this.renderAffix('prefix', active, focused)}
 
-            <TextInput
+            <Text
               style={[styles.input, inputStyle, inputStyleOverrides]}
               selectionColor={tintColor}
-
               {...props}
-
               editable={!disabled && editable}
               onChange={this.onChange}
               onChangeText={this.onChangeText}
@@ -530,7 +528,9 @@ export default class TextField extends PureComponent {
               onBlur={this.onBlur}
               value={value}
               ref={this.updateRef}
-            />
+            >
+              {value}
+            </Text>
 
             {this.renderAffix('suffix', active, focused)}
             {this.renderAccessory()}
